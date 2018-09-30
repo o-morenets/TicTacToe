@@ -10,8 +10,11 @@ enum ViewState {
 @SuppressWarnings("serial")
 class ButtomPanelSetting extends JPanel {
     public ButtomPanelSetting() {
+
         JPanel panel = new JPanel();
         JButton button = new JButton("ONE");
+        add(panel, BorderLayout.SOUTH);
+        panel.setLayout(new GridLayout());
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -28,6 +31,8 @@ class ButtomPanelGame extends JPanel {
     public ButtomPanelGame() {
         JPanel panel = new JPanel();
         JButton button = new JButton("TWO");
+        add(panel, BorderLayout.SOUTH);
+            panel.setLayout(new GridLayout());
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -56,8 +61,20 @@ class MyWindow extends JFrame{
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         changeState(ViewState.START_STATE);
+
+        mpanel.setLayout(new BorderLayout());
+        add(setting, BorderLayout.SOUTH);
+        mpanel.add(setting);
+
+        add(game, BorderLayout.SOUTH);
+        mpanel.add(game);
+
+        setting.setLayout(new GridLayout());
+        game.setLayout(new GridLayout());
+
         frame.add(mpanel);
         frame.setVisible(true);
+//        mpanel.setVisible(true);
     }
     public static void changeState(ViewState state) {
         viewState = state;
