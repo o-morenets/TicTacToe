@@ -14,7 +14,7 @@ class MyWindow extends JFrame{
     private static JPanel gameField;
     private static JPanel settingField;
     private static JFrame frame;
-//    private static Image image;
+    private static Image image;
 
     public MyWindow(){
         frame = new JFrame();
