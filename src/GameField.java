@@ -1,12 +1,15 @@
 import javax.swing.*;
 import java.awt.*;
 
-class GameField extends JPanel {
+public class GameField extends JPanel {
     public GameField(){
-        JPanel field = new JPanel();
-        add(field, BorderLayout.CENTER);
-        field.setBackground(Color.yellow);
-        field.setLayout(new GridLayout());
-        this.add(field);
+
     }
+//    @Override
+//    protected void paintComponent (Graphics g){
+//
+//        g.setColor(Color.white);
+//        g.fillRect(0,0,300,300);
+//        super.paintComponent(g);
+//    }
 }

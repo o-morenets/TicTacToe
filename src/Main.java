@@ -1,5 +1,9 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 enum ViewState {
     START_STATE, GAME_STATE;
@@ -11,10 +15,16 @@ class MyWindow extends JFrame{
     private static JPanel mainPanelTop;
     private static JPanel setting;
     private static JPanel game;
-    private static JPanel gameField;
+    private static JPanel gameBackground;
     private static JPanel settingField;
     private static JFrame frame;
-    private static Image image;
+    private int width;
+    private int height;
+    private final int SIZE = 3;
+    private int cellWidth;
+    private int cellHeight;
+    private char[][] map;
+//    private static JPanel gameField;
 
     public MyWindow(){
         frame = new JFrame();
@@ -22,38 +32,49 @@ class MyWindow extends JFrame{
         mainPanelTop = new JPanel();
         setting = new BottomPanelSetting();
         game = new BottomPanelGame();
-        gameField = new GameField();
+        gameBackground = new GameBackground();
         settingField = new SettingField();
+//        gameField = new GameField();
 
-        frame.setSize(400, 400);
+        frame.setSize(600, 700);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         mainPanelBottom.setLayout(new BorderLayout());
 
         mainPanelBottom.add(game, BorderLayout.SOUTH);
-        mainPanelBottom.add(setting, BorderLayout.SOUTH);
-        mainPanelTop.add(gameField, BorderLayout.CENTER);
+        mainPanelBottom.add(setting, BorderLayout.SOUTH) ;
+        mainPanelTop.add(gameBackground, BorderLayout.CENTER);
         mainPanelTop.add(settingField, BorderLayout.CENTER);
 
-        gameField.setPreferredSize(new Dimension(400,340));
-        settingField.setPreferredSize(new Dimension(400,340));
+        gameBackground.setPreferredSize(new Dimension(600,660));
+        settingField.setPreferredSize(new Dimension(600,660));
         game.setPreferredSize(new Dimension(1,40));
         setting.setPreferredSize(new Dimension(1,40));
-        gameField.setBackground(Color.yellow);
-        settingField.setBackground(Color.cyan);
-
+        settingField.setBackground(new Color(233,245,180));
 
         settingField.setLayout(new BorderLayout());
-        gameField.setLayout(new BorderLayout());
+        gameBackground.setLayout(new BorderLayout());
         setting.setLayout(new GridLayout());
         game.setLayout(new GridLayout());
+
+        BufferedImage myPicture = null;
+        try {
+            myPicture = ImageIO.read(new File("pictures/field.jpg"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        JLabel picLabel = new JLabel(new ImageIcon(myPicture));
+        gameBackground.add(picLabel);
 
         frame.getContentPane().add(BorderLayout.SOUTH, mainPanelBottom);
         frame.getContentPane().add(BorderLayout.CENTER, mainPanelTop);
         changeState(ViewState.START_STATE);
+
         frame.setVisible(true);
     }
+
+
     public static void changeState(ViewState state) {
         viewState = state;
         System.out.println("change state: " + viewState);
@@ -73,7 +94,7 @@ class MyWindow extends JFrame{
                 mainPanelBottom.removeAll();
                 mainPanelTop.removeAll();
                 mainPanelBottom.add(game);
-                mainPanelTop.add(gameField);
+                mainPanelTop.add(gameBackground);
                 mainPanelBottom.revalidate();
                 mainPanelTop.revalidate();
                 mainPanelBottom.repaint();
