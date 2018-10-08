@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 class BottomPanelGame extends JPanel {
     public BottomPanelGame() {
+
         JPanel panel = new JPanel();
         JButton buttonSetting = new JButton("Настройки");
         JButton buttonExit = new JButton("Выход");
