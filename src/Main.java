@@ -34,16 +34,31 @@ class MyWindow extends JFrame{
         mainPanelTop.setLayout(new BorderLayout());
         gameBackground.setPreferredSize(new Dimension(600,660));
         settingField.setPreferredSize(new Dimension(600,660));
-        settingField.setBackground(new Color(233,245,180));
+//        settingField.setBackground(new Color(233,245,180));
         game.setPreferredSize(new Dimension(1,40));
         setting.setPreferredSize(new Dimension(1,40));
 
         settingField.setLayout(new BorderLayout());
+        JPanel mainData = new JPanel();
+        JPanel panelOne = new JPanel();
+        JPanel panelTwo = new JPanel();
+
+        mainData.setLayout(new BoxLayout(mainData, BoxLayout.Y_AXIS));
+        mainData.setBackground(Color.cyan);
+        panelOne.setPreferredSize(new Dimension(40,40));
+        panelTwo.setPreferredSize(new Dimension(40,40));
+        panelOne.setBackground(Color.white);
+        panelTwo.setBackground(Color.white);
+        mainData.add(panelOne);
+        mainData.add(panelTwo);
+        settingField.add(mainData);
+
+
         gameBackground.setLayout(new BorderLayout());
         setting.setLayout(new GridLayout());
         game.setLayout(new GridLayout());
 
-        setContentPane(gameBackground);
+//        setContentPane(gameBackground);
         gameBackground.setBackground(Color.white);
         gameBackground.add(gameField, BorderLayout.CENTER);
 

@@ -7,6 +7,10 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+enum Move {
+    moveX, moveO;
+}
+
 public class GameField extends JPanel {
     private int width;
     private int height;
@@ -14,6 +18,7 @@ public class GameField extends JPanel {
     private int cellWidth;
     private int cellHeight;
     private char [][] map;
+    private static ViewState move;
 
     public GameField() {
         setOpaque(false);
@@ -25,7 +30,7 @@ public class GameField extends JPanel {
                 int clX = e.getX()/cellWidth;
                 int clY = e.getY()/cellHeight;
                 System.out.println((clX + 1) + " " + (clY + 1));
-                map[clX][clY] = 'X';
+                map[clX][clY] = '*';
                 repaint();
             }
         });
@@ -41,6 +46,20 @@ public class GameField extends JPanel {
         cellHeight = height/SIZE;
         cellWidth = width/SIZE;
 
+        BufferedImage myPictureKrestic = null;
+        try {
+            myPictureKrestic = ImageIO.read(new File("pictures/krestic.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        BufferedImage myPictureNolik = null;
+        try {
+            myPictureNolik = ImageIO.read(new File("pictures/nolik.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         for (int i = 0; i < SIZE; i++) {
             g2d.setColor(Color.black);
             g2d.drawLine(0, i*cellHeight, width, i*cellHeight);
@@ -49,18 +68,26 @@ public class GameField extends JPanel {
 
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
-                if (map[i][j] == 'X') {
-
-                    BufferedImage myPicture = null;
-                    try {
-                        myPicture = ImageIO.read(new File("pictures/krestic.png"));
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    g2d.drawImage(myPicture, i*cellWidth, j*cellHeight, cellWidth,cellHeight, null);
-
+                if (map[i][j] == '*') {
+                    g2d.drawImage(myPictureKrestic, i*cellWidth, j*cellHeight, cellWidth,cellHeight, null);
                 }
             }
         }
     }
+
+    public static void firstMove(Move state) {
+
+        switch (state) {
+            case moveX:
+
+                break;
+            case moveO:
+
+                break;
+            default:
+                System.out.println("UNKNOWN STATE!");
+                break;
+        }
+    }
+
 }
