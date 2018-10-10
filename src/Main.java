@@ -39,19 +39,50 @@ class MyWindow extends JFrame{
         setting.setPreferredSize(new Dimension(1,40));
 
         settingField.setLayout(new BorderLayout());
-        JPanel mainData = new JPanel();
+
+        JPanel top = new JPanel();
+        settingField.add(top, BorderLayout.NORTH);
+        top.setPreferredSize(new Dimension(1, 50));
+        top.setBackground(Color.cyan);
+
+        JPanel neTop = new JPanel();
+        settingField.add(neTop, BorderLayout.SOUTH);
+        neTop.setPreferredSize(new Dimension(1,250));
+        neTop.setBackground(Color.orange);
+
+        JPanel center = new JPanel();
+        settingField.add(center, BorderLayout.CENTER);
+        center.setLayout(new BoxLayout(center, BoxLayout.Y_AXIS));
+
         JPanel panelOne = new JPanel();
         JPanel panelTwo = new JPanel();
 
-        mainData.setLayout(new BoxLayout(mainData, BoxLayout.Y_AXIS));
-        mainData.setBackground(Color.cyan);
-        panelOne.setPreferredSize(new Dimension(40,40));
-        panelTwo.setPreferredSize(new Dimension(40,40));
         panelOne.setBackground(Color.white);
-        panelTwo.setBackground(Color.white);
-        mainData.add(panelOne);
-        mainData.add(panelTwo);
-        settingField.add(mainData);
+        panelTwo.setBackground(Color.blue);
+        center.add(panelOne);
+        center.add(panelTwo);
+
+        JLabel settingOne = new JLabel("выберите с кем играть:");
+        panelOne.add(settingOne);
+
+        JRadioButton AI = new JRadioButton("с компуктером");
+        panelOne.add(AI);
+        JRadioButton friend = new JRadioButton("с другом");
+        panelOne.add(friend);
+        ButtonGroup bg2 = new ButtonGroup();
+        bg2.add(AI);
+        bg2.add(friend);
+
+        JLabel settingTwo = new JLabel("выберите с кем играть:");
+        panelTwo.add(settingTwo);
+
+        JRadioButton easy = new JRadioButton("легкий");
+        panelTwo.add(easy);
+        JRadioButton hard = new JRadioButton("сложный");
+        panelTwo.add(hard);
+        ButtonGroup bg1 = new ButtonGroup();
+        bg1.add(easy);
+        bg1.add(hard);
 
 
         gameBackground.setLayout(new BorderLayout());
@@ -59,7 +90,7 @@ class MyWindow extends JFrame{
         game.setLayout(new GridLayout());
 
 //        setContentPane(gameBackground);
-        gameBackground.setBackground(Color.white);
+        gameBackground.setBackground(new Color(229,255, 76));
         gameBackground.add(gameField, BorderLayout.CENTER);
 
         frame.getContentPane().add(BorderLayout.SOUTH, mainPanelBottom);

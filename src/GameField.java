@@ -7,9 +7,9 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-enum Move {
-    moveX, moveO;
-}
+//enum Move {
+//    moveX, moveO;
+//}
 
 public class GameField extends JPanel {
     private int width;
@@ -19,6 +19,8 @@ public class GameField extends JPanel {
     private int cellHeight;
     private char [][] map;
     private static ViewState move;
+    private boolean moveX = true;
+    private boolean moveO = false;
 
     public GameField() {
         setOpaque(false);
@@ -35,6 +37,8 @@ public class GameField extends JPanel {
             }
         });
     }
+
+
 
     @Override
     protected void paintComponent(Graphics g) {
@@ -68,26 +72,14 @@ public class GameField extends JPanel {
 
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
-                if (map[i][j] == '*') {
+                if (map[i][j] == '*' && moveX == true) {
                     g2d.drawImage(myPictureKrestic, i*cellWidth, j*cellHeight, cellWidth,cellHeight, null);
+//                    moveX = false;
+                } else {
+                    g2d.drawImage(myPictureNolik, i*cellWidth, j*cellHeight, cellWidth,cellHeight, null);
+                    moveX = true;
                 }
             }
         }
     }
-
-    public static void firstMove(Move state) {
-
-        switch (state) {
-            case moveX:
-
-                break;
-            case moveO:
-
-                break;
-            default:
-                System.out.println("UNKNOWN STATE!");
-                break;
-        }
-    }
-
 }
