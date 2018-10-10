@@ -58,7 +58,7 @@ class MyWindow extends JFrame{
         JPanel panelTwo = new JPanel();
 
         panelOne.setBackground(Color.white);
-        panelTwo.setBackground(Color.blue);
+        panelTwo.setBackground(new Color(31,255, 245));
         center.add(panelOne);
         center.add(panelTwo);
 
