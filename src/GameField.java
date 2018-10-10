@@ -21,6 +21,8 @@ public class GameField extends JPanel {
     private static ViewState move;
     private boolean moveX = true;
     private boolean moveO = false;
+    int clX;
+    int clY;
 
     public GameField() {
         setOpaque(false);
@@ -29,14 +31,15 @@ public class GameField extends JPanel {
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
-                int clX = e.getX()/cellWidth;
-                int clY = e.getY()/cellHeight;
+                clX = e.getX()/cellWidth;
+                clY = e.getY()/cellHeight;
                 System.out.println((clX + 1) + " " + (clY + 1));
                 map[clX][clY] = '*';
                 repaint();
             }
         });
     }
+
 
 
 
@@ -70,16 +73,19 @@ public class GameField extends JPanel {
             g2d.drawLine(i*cellWidth,0,i*cellWidth,height);
         }
 
-        for (int i = 0; i < SIZE; i++) {
-            for (int j = 0; j < SIZE; j++) {
-                if (map[i][j] == '*' && moveX == true) {
-                    g2d.drawImage(myPictureKrestic, i*cellWidth, j*cellHeight, cellWidth,cellHeight, null);
-//                    moveX = false;
-                } else {
-                    g2d.drawImage(myPictureNolik, i*cellWidth, j*cellHeight, cellWidth,cellHeight, null);
-                    moveX = true;
+//        for (int i = 0; i < SIZE; i++) {
+//            for (int j = 0; j < SIZE; j++) {
+                if ((map[clX][clY] == '*') && (moveX == true)) {
+                    g2d.drawImage(myPictureKrestic, clX*cellWidth, clY*cellHeight, cellWidth,cellHeight, null);
+                    System.out.println("X");
+                    moveX = false;
+                } else
+                    if((map[clX][clY] == '*') && (moveX != true)) {
+                        g2d.drawImage(myPictureNolik, clX*cellWidth, clY*cellHeight, cellWidth,cellHeight, null);
+                        System.out.println("O");
+                        moveX = true;
                 }
-            }
-        }
+//            }
+//        }
     }
 }
