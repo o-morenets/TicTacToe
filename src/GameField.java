@@ -18,7 +18,6 @@ public class GameField extends JPanel {
     private int cellWidth;
     private int cellHeight;
     private char [][] map;
-    private static ViewState move;
     private boolean moveX = true;
     int clX;
     int clY;
@@ -41,6 +40,14 @@ public class GameField extends JPanel {
                     }
                     moveX = !moveX;
                     repaint();
+                }
+                if (isMapFull()){
+                    System.out.println("ничья");
+                    new Draw();
+                }
+                if (checkWin(map[clX][clY])){
+                    System.out.println("кто-то выйграл");
+                    new Win();
                 }
             }
         });
@@ -86,4 +93,32 @@ public class GameField extends JPanel {
             }
         }
     }
+
+    public boolean isMapFull(){
+        for(int i=0; i < SIZE; i++){
+            for(int j=0;j <SIZE; j++){
+                if(map[i][j] == 0) return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean checkWin (char symb) {
+
+        if(map[0][0] == symb && map[0][1] == symb && map[0][2] == symb) return true;
+        if(map[1][0] == symb && map[1][1] == symb && map[1][2] == symb) return true;
+        if(map[2][0] == symb && map[2][1] == symb && map[2][2] == symb) return true;
+
+        if(map[0][0] == symb && map[1][1] == symb && map[2][2] == symb) return true;
+
+        if(map[0][0] == symb && map[1][0] == symb && map[2][0] == symb) return true;
+        if(map[0][1] == symb && map[1][1] == symb && map[2][1] == symb) return true;
+
+        if(map[2][0] == symb && map[1][1] == symb && map[0][2] == symb) return true;
+        if(map[0][2] == symb && map[1][2] == symb && map[2][2] == symb) return true;
+
+        return false;
+    }
+
+
 }

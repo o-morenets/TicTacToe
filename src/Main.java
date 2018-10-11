@@ -90,7 +90,7 @@ class MyWindow extends JFrame{
         game.setLayout(new GridLayout());
 
 //        setContentPane(gameBackground);
-        gameBackground.setBackground(new Color(229,255, 76));
+        gameBackground.setBackground(new Color(255, 246, 166));
         gameBackground.add(gameField, BorderLayout.CENTER);
 
         frame.getContentPane().add(BorderLayout.SOUTH, mainPanelBottom);
