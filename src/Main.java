@@ -29,12 +29,12 @@ class MyWindow extends JFrame{
         frame.setSize(600, 700);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.setTitle("крестики нолики");
 
         mainPanelBottom.setLayout(new BorderLayout());
         mainPanelTop.setLayout(new BorderLayout());
         gameBackground.setPreferredSize(new Dimension(600,660));
         settingField.setPreferredSize(new Dimension(600,660));
-//        settingField.setBackground(new Color(233,245,180));
         game.setPreferredSize(new Dimension(1,40));
         setting.setPreferredSize(new Dimension(1,40));
 
@@ -89,7 +89,6 @@ class MyWindow extends JFrame{
         setting.setLayout(new GridLayout());
         game.setLayout(new GridLayout());
 
-//        setContentPane(gameBackground);
         gameBackground.setBackground(new Color(255, 246, 166));
         gameBackground.add(gameField, BorderLayout.CENTER);
 
@@ -135,6 +134,7 @@ class MyWindow extends JFrame{
 
 class Main {
     public static void main(String[] args) {
+
         MyWindow start = new MyWindow();
     }
 }

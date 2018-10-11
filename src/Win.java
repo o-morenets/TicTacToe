@@ -17,6 +17,7 @@ public class Win extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("тут надо сделать закрытие");
+
             }
         });
         add(panel, BorderLayout.NORTH);
