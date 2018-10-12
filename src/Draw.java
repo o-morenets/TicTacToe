@@ -16,7 +16,7 @@ public class Draw extends JFrame {
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("тут надо сделать закрытие");
+                System.out.println("тут надо сделать начало новой игры");
             }
         });
         add(panel, BorderLayout.NORTH);

@@ -7,10 +7,6 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-//enum Move {
-//    moveX, moveO;
-//}
-
 public class GameField extends JPanel {
     private int width;
     private int height;
@@ -49,6 +45,7 @@ public class GameField extends JPanel {
                     System.out.println("кто-то выйграл");
                     new Win();
                 }
+
             }
         });
     }
@@ -92,6 +89,7 @@ public class GameField extends JPanel {
                 }
             }
         }
+
     }
 
     public boolean isMapFull(){
