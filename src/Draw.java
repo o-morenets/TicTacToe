@@ -11,8 +11,8 @@ public class Draw extends JFrame {
         JPanel panel = new JPanel();
         setBackground(Color.white);
         setLayout(new BorderLayout());
-        JLabel label = new JLabel("Увы и ах господа, но это ничья. Так выпьем же за это!!!");
-        JButton button = new JButton("Выпьем!!!");
+        JLabel label = new JLabel("Ты не выйграл, но и не проиграл!");
+        JButton button = new JButton("Хочу выйграть!");
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
