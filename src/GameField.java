@@ -7,22 +7,16 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-//enum Move {
-//    moveX, moveO;
-//}
-
 public class GameField extends JPanel {
-    private static ViewState move;
-    private final int SIZE = 3;
-    int clX;
-    int clY;
     private int width;
     private int height;
+    private final int SIZE = 3;
     private int cellWidth;
     private int cellHeight;
-    private char[][] map;
+    private char [][] map;
     private boolean moveX = true;
-    private boolean moveO = false;
+    int clX;
+    int clY;
 
     public GameField() {
         setOpaque(false);
@@ -43,20 +37,30 @@ public class GameField extends JPanel {
                     moveX = !moveX;
                     repaint();
                 }
+                if (isMapFull()){
+                    System.out.println("ничья");
+                    new Draw();
+                }
+                if (checkWin(map[clX][clY])){
+                    System.out.println("кто-то выйграл");
+                    new Win();
+                }
+
             }
         });
     }
 
-
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        Graphics2D g2d = (Graphics2D) g;
+        Graphics2D g2d = (Graphics2D)g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         width = getWidth();
         height = getHeight();
-        cellHeight = height / SIZE;
-        cellWidth = width / SIZE;
+        cellHeight = height/SIZE;
+        cellWidth = width/SIZE;
+
+
 
         BufferedImage myPictureKrestic = null;
         try {
@@ -72,10 +76,11 @@ public class GameField extends JPanel {
             e.printStackTrace();
         }
 
+
         for (int i = 0; i < SIZE; i++) {
             g2d.setColor(Color.black);
-            g2d.drawLine(0, i * cellHeight, width, i * cellHeight);
-            g2d.drawLine(i * cellWidth, 0, i * cellWidth, height);
+            g2d.drawLine(0, i*cellHeight, width, i*cellHeight);
+            g2d.drawLine(i*cellWidth,0,i*cellWidth,height);
         }
 
         for (int i = 0; i < SIZE; i++) {
@@ -87,5 +92,34 @@ public class GameField extends JPanel {
                 }
             }
         }
+
     }
+
+    public boolean isMapFull(){
+        for(int i=0; i < SIZE; i++){
+            for(int j=0;j <SIZE; j++){
+                if(map[i][j] == 0) return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean checkWin (char symb) {
+
+        if(map[0][0] == symb && map[0][1] == symb && map[0][2] == symb) return true;
+        if(map[1][0] == symb && map[1][1] == symb && map[1][2] == symb) return true;
+        if(map[2][0] == symb && map[2][1] == symb && map[2][2] == symb) return true;
+
+        if(map[0][0] == symb && map[1][1] == symb && map[2][2] == symb) return true;
+
+        if(map[0][0] == symb && map[1][0] == symb && map[2][0] == symb) return true;
+        if(map[0][1] == symb && map[1][1] == symb && map[2][1] == symb) return true;
+
+        if(map[2][0] == symb && map[1][1] == symb && map[0][2] == symb) return true;
+        if(map[0][2] == symb && map[1][2] == symb && map[2][2] == symb) return true;
+
+        return false;
+    }
+
+
 }
