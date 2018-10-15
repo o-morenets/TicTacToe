@@ -104,41 +104,37 @@ class MyWindow extends JFrame{
     }
 
 
-    public static void changeState(ViewState state) {
+    static void changeState(ViewState state) {
         viewState = state;
         System.out.println("change state: " + viewState);
 
         switch (state) {
             case START_STATE:
-                mainPanelBottom.removeAll();
-                mainPanelTop.removeAll();
-                mainPanelBottom.add(setting);
-                mainPanelTop.add(settingField);
-                mainPanelBottom.revalidate();
-                mainPanelTop.revalidate();
-                mainPanelBottom.repaint();
-                mainPanelTop.repaint();
+                updateMainPanels(setting, settingField);
                 break;
             case GAME_STATE:
-                mainPanelBottom.removeAll();
-                mainPanelTop.removeAll();
-                mainPanelBottom.add(game);
-                mainPanelTop.add(gameBackground);
-                mainPanelBottom.revalidate();
-                mainPanelTop.revalidate();
-                mainPanelBottom.repaint();
-                mainPanelTop.repaint();
-                break;
+                updateMainPanels(game, gameBackground);
             default:
                 System.out.println("UNKNOWN STATE!");
                 break;
         }
     }
+
+    private static void updateMainPanels(JPanel setting, JPanel settingField) {
+        updateMainPanel(mainPanelTop, settingField);
+        updateMainPanel(mainPanelBottom, setting);
+    }
+
+    private static void updateMainPanel(JPanel mainPanelTop, JPanel settingField) {
+        mainPanelTop.removeAll();
+        mainPanelTop.add(settingField);
+        mainPanelTop.revalidate();
+        mainPanelTop.repaint();
+    }
 }
 
 class Main {
     public static void main(String[] args) {
-
-        MyWindow start = new MyWindow();
+        new MyWindow();
     }
 }
