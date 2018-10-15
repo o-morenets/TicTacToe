@@ -4,7 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Win extends JFrame {
-    public Win(){
+
+    public Win() {
         setTitle("победа");
         setSize(400, 150);
         setLocationRelativeTo(null);
@@ -13,7 +14,9 @@ public class Win extends JFrame {
         setLayout(new BorderLayout());
         JLabel label = new JLabel("Победа!!!");
         JButton button = new JButton("Выход");
+
         button.addActionListener(new ActionListener() {
+
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("тут надо сделать начало новой игры");
@@ -21,6 +24,7 @@ public class Win extends JFrame {
                 System.exit(0);
             }
         });
+
         add(panel, BorderLayout.NORTH);
         panel.setPreferredSize(new Dimension(1, 50));
         panel.add(label, BorderLayout.NORTH);

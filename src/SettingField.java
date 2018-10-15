@@ -2,7 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 
 class SettingField extends JPanel {
-    public SettingField(){
+
+    public SettingField() {
         JPanel panel = new JPanel();
         add(panel, BorderLayout.CENTER);
 //        JLabel jLabel = new JLabel("Необходимо выбрать, с кем вы будете играть");

@@ -13,17 +13,21 @@ class BottomPanelSetting extends JPanel {
         panel.setLayout(new GridLayout());
 
         buttonStart.addActionListener(new ActionListener() {
+
             @Override
             public void actionPerformed(ActionEvent e) {
-                    MyWindow.changeState(ViewState.GAME_STATE);
-                }
+                MyWindow.changeState(ViewState.GAME_STATE);
+            }
         });
+
         buttonExit.addActionListener(new ActionListener() {
+
             @Override
             public void actionPerformed(ActionEvent e) {
-                    System.exit(0);
-                }
+                System.exit(0);
+            }
         });
+
         panel.add(buttonStart);
         panel.add(buttonExit);
         this.add(panel);
