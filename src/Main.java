@@ -43,12 +43,12 @@ class MyWindow extends JFrame{
         JPanel top = new JPanel();
         settingField.add(top, BorderLayout.NORTH);
         top.setPreferredSize(new Dimension(1, 50));
-        top.setBackground(Color.cyan);
+        top.setBackground(new Color(255, 127, 41));
 
         JPanel neTop = new JPanel();
         settingField.add(neTop, BorderLayout.SOUTH);
         neTop.setPreferredSize(new Dimension(1,250));
-        neTop.setBackground(Color.orange);
+        neTop.setBackground(new Color(255, 127, 41));
 
         JPanel center = new JPanel();
         settingField.add(center, BorderLayout.CENTER);
@@ -58,31 +58,35 @@ class MyWindow extends JFrame{
         JPanel panelTwo = new JPanel();
 
         panelOne.setBackground(Color.white);
-        panelTwo.setBackground(new Color(31,255, 245));
+        panelTwo.setBackground(Color.white);
         center.add(panelOne);
         center.add(panelTwo);
 
-        JLabel settingOne = new JLabel("выберите с кем играть:");
+        JLabel settingOne = new JLabel("Жми играть");
+        settingOne.setFont(new Font("Serif", Font.PLAIN, 28));
         panelOne.add(settingOne);
 
-        JRadioButton AI = new JRadioButton("с компуктером");
-        panelOne.add(AI);
-        JRadioButton friend = new JRadioButton("с другом");
-        panelOne.add(friend);
-        ButtonGroup bg2 = new ButtonGroup();
-        bg2.add(AI);
-        bg2.add(friend);
+//        JRadioButton AI = new JRadioButton("с компуктером");
+//        AI.setFont(new Font("Serif", Font.PLAIN, 24));
+//        AI.setSelected(true);
+//        panelOne.add(AI);
+//        JRadioButton friend = new JRadioButton("с другом");
+//        friend.setFont(new Font("Serif", Font.PLAIN, 24));
+//        panelOne.add(friend);
+//        ButtonGroup bg2 = new ButtonGroup();
+//        bg2.add(AI);
+//        bg2.add(friend);
 
-        JLabel settingTwo = new JLabel("выберите с кем играть:");
-        panelTwo.add(settingTwo);
-
-        JRadioButton easy = new JRadioButton("легкий");
-        panelTwo.add(easy);
-        JRadioButton hard = new JRadioButton("сложный");
-        panelTwo.add(hard);
-        ButtonGroup bg1 = new ButtonGroup();
-        bg1.add(easy);
-        bg1.add(hard);
+//        JLabel settingTwo = new JLabel("выберите с кем играть:");
+//        panelTwo.add(settingTwo);
+//
+//        JRadioButton easy = new JRadioButton("легкий");
+//        panelTwo.add(easy);
+//        JRadioButton hard = new JRadioButton("сложный");
+//        panelTwo.add(hard);
+//        ButtonGroup bg1 = new ButtonGroup();
+//        bg1.add(easy);
+//        bg1.add(hard);
 
 
         gameBackground.setLayout(new BorderLayout());

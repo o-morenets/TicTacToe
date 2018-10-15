@@ -12,12 +12,13 @@ public class Win extends JFrame {
         setBackground(Color.white);
         setLayout(new BorderLayout());
         JLabel label = new JLabel("Победа!!!");
-        JButton button = new JButton("Выйграть еще раз!");
+        JButton button = new JButton("Выход");
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("тут надо сделать начало новой игры");
-
+                new GameField();
+                System.exit(0);
             }
         });
         add(panel, BorderLayout.NORTH);

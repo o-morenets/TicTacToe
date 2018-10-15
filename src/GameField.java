@@ -60,6 +60,8 @@ public class GameField extends JPanel {
         cellHeight = height/SIZE;
         cellWidth = width/SIZE;
 
+
+
         BufferedImage myPictureKrestic = null;
         try {
             myPictureKrestic = ImageIO.read(new File("pictures/krestic.png"));
@@ -73,6 +75,7 @@ public class GameField extends JPanel {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
 
         for (int i = 0; i < SIZE; i++) {
             g2d.setColor(Color.black);
