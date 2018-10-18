@@ -135,6 +135,6 @@ class MyWindow extends JFrame{
 
 class Main {
     public static void main(String[] args) {
-        new MyWindow();
+        new Start();
     }
 }
